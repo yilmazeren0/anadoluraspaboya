@@ -785,6 +785,48 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 0 0 8px 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links.active a {
+                margin-bottom: 15px;
+                padding: 10px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links.active a:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
             }
             
             .hero h1 {
@@ -803,29 +845,8 @@
             .service-card {
                 padding: 20px;
             }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active a {
-                margin-bottom: 10px;
-            }
         }
-
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -1099,8 +1120,10 @@
                         </div>
                         <div class="contact-details">
                             <strong>Telefon:</strong>
-                            +90 507 921 22 27
+                            <strong>Ercan Seven</strong>
+                            +90 507 921 22 27 
                         </div>
+                       
                     </div>
                     <div class="contact-item animated delay-2">
                         <div class="contact-icon">
@@ -1117,6 +1140,37 @@
     </script>
 
     <script>
+        // Hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const menuLinks = navLinks.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            }
+        });
+
         function openModal(imgSrc) {
             document.getElementById('imageModal').style.display = 'block';
             document.getElementById('modalImg').src = imgSrc;
