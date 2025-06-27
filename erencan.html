@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anadolu Raspa Boya | Endüstriyel Boya Hizmetleri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1e3c72;
+            --secondary: #2a5298;
+            --accent: #ee5a24;
+            --light: #f8f9fa;
+            --dark: #0d1b2a;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: var(--primary);
+            margin-bottom: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-image: url(j.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .animated-waves {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .animated-waves svg {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110%;
+            height: auto;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat bottom;
+            background-size: cover;
+            animation: wave 8s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ff6b6b, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, #ff6b6b, var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4);
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(238, 90, 36, 0.6);
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, var(--accent));
+            border-radius: 2px;
+        }
+
+        .services {
+            padding: 50px 0 100px;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transition: height 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: #666;
+            position: relative;
+            z-index: 2;
+        }
+
+        .paint-types {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .paint-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .paint-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .paint-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .paint-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .paint-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* References Section */
+        .references {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .reference-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #f0f0f0;
+        }
+
+        .reference-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .reference-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .reference-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .close:hover {
+            color: var(--accent);
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat bottom;
+            background-size: cover;
+            animation: wave 10s ease-in-out infinite;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, var(--accent));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-details strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Scroll to Top Button */
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #scrollTopBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 400px;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active a {
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-paint-roller"></i>
+                Anadolu Raspa Boya
+            </a>
+            <ul class="nav-links">
+                <li><a href="#anasayfa">Ana Sayfa</a></li>
+                <li><a href="#hizmetler">Hizmetler</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#referanslar">Referanslar</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="anasayfa" class="hero">
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animated">Profesyonel <span class="highlight">Endüstriyel Boya</span> Hizmetleri</h1>
+                <p class="animated delay-1">Şirketimiz, çelik konstrüksiyon sistemleri ve gemi sektörlerinde epoksi, akrilik, sentetik vb. boya uygulamalarında uzmanlaşmış, kalite ve dayanıklılığı ön planda tutan firmadır.</p>
+                <a href="#iletisim" class="cta-button animated delay-2">Hemen Teklif Alın</a>
+                <div class="stats">
+                    <div class="stat-item animated delay-3">
+                        <div class="stat-number">21+</div>
+                        <div class="stat-text">Yıllık Tecrübe</div>
+                    </div>
+                    <div class="stat-item animated delay-4">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-text">Tamamlanan Proje</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="hizmetler" class="services">
+        <div class="container">
+            <h2 class="section-title">Hizmetlerimiz</h2>
+            <div class="services-grid">
+                <div class="service-card animated">
+                    <div class="service-icon gradient-bg">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Çelik Konstrüksiyon Boyama</h3>
+                    <p>Çelik yapıların uzun ömürlü ve dayanıklı olması için profesyonel boyama hizmeti sunuyoruz.</p>
+                </div>
+                <div class="service-card animated delay-1">
+                    <div class="service-icon gradient-bg">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Gemi Gövde Boyama</h3>
+                    <p>Su altı ve su üstü gövde boyama işlemleri. Korozyon koruması ve estetik görünüm için profesyonel boyama hizmetleri.</p>
+                </div>
+            
+                <div class="service-card animated delay-2">
+                    <div class="service-icon gradient-bg">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Bakım ve Onarım</h3>
+                    <p>Mevcut boya tabakalarının tamiri, yenilenmesi ve bakım işlemleri. Pas temizleme ve koruma.</p>
+                </div>
+                <div class="service-card animated delay-3">
+                    <div class="service-icon gradient-bg">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Korozyon Koruması</h3>
+                    <p>Uzun ömürlü korozyon koruma sistemleri. Deniz suyu ve hava koşullarına karşı maksimum koruma.</p>
+                </div>
+                <div class="service-card animated">
+                    <div class="service-icon gradient-bg">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Özel Boyama</h3>
+                    <p>Müşteri taleplerine göre özel renk ve desen uygulamaları. Logo ve yazı işlemleri.</p>
+                </div>
+                <div class="service-card animated delay-1">
+                    <div class="service-icon gradient-bg">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Muayene ve Raporlama</h3>
+                    <p>Boyama öncesi ve sonrası detaylı muayene. Kalite kontrol raporları ve garanti hizmetleri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="hakkimizda" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="animated">Hakkımızda</h2>
+                    <p class="animated delay-1">20 yılı aşkın tecrübemizle çelik sektöründe boyama konusunda uzmanlaştık. Kaliteli malzemeler ve modern tekniklerle ürünlerinizi en iyi şekilde koruyoruz.</p>
+                    <p class="animated delay-2">Müşteri memnuniyeti odaklı çalışma anlayışımız, titiz işçiliğimiz ve zamanında teslimat prensiplerimizle sektörde güvenilir bir partner olmayı hedefliyoruz.</p>
+                    <p class="animated delay-3">Tüm işlerimizde uluslararası standartlara uygun çalışır, çevre dostu boyalar kullanırız. Ekibimiz sürekli eğitim alarak kendini geliştirmektedir.</p>
+                    <div class="features">
+                        <div class="feature-item animated">
+                            <div class="feature-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Kalite Garantisi</h4>
+                                <p>Uluslararası standartlarda işçilik</p>
+                            </div>
+                        </div>
+                        <div class="feature-item animated delay-1">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Çevre Dostu</h4>
+                                <p>Ekolojik dengeye uygun ürünler</p>
+                            </div>
+                        </div>
+                        <div class="feature-item animated delay-2">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Zamanında Teslimat</h4>
+                                <p>Projelerinizin zamanında tamamlanması</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animated">
+                    <img src="g.jpg" alt="Hakkımızda" style="width: 100%; height: auto; border-radius: 20px;">
+                    <div class="experience-badge">
+                        21+ Yıllık Deneyim
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section id="boyalar" class="paint-types">
+        <div class="container">
+            <h2 class="section-title">Kullandığımız Boya Türleri</h2>
+            <div class="paint-grid">
+                <div class="paint-card">
+                    <h3>🎯 Epoksi Boyalar</h3>
+                    <p>Yüksek kimyasal dayanım, mükemmel yapışma ve uzun ömürlü koruma sağlar. Endüstriyel alanlarda tercih edilir.</p>
+                </div>
+                <div class="paint-card">
+                    <h3>🌈 Akrilik Boyalar</h3>
+                    <p>UV dayanımı yüksek, çevre dostu ve estetik görünüm sunar. Dış cephe uygulamalarında idealdir.</p>
+                </div>
+                <div class="paint-card">
+                    <h3>⚡ Sentetik Boyalar</h3>
+                    <p>Hızlı kuruma, yüksek örtücülük ve çok amaçlı kullanım. Metal yüzeylerde mükemmel performans gösterir.</p>
+                </div>
+                <div class="paint-card">
+                    <h3>🛡️ Primer Boyalar</h3>
+                    <p>Yüzey hazırlama ve korozyon önleme. Üst katman boyaların daha iyi tutunmasını sağlar.</p>
+                </div>
+                <div class="paint-card">
+                    <h3>İnşaat Boyaları</h3>
+                    <p>İç cephe, dış cephe boya uygulamaları</p>
+                </div>
+                <div class="paint-card">
+                    <h3>🔥 Yüksek Sıcaklık Boyaları</h3>
+                    <p>Extreme sıcaklıklara dayanıklı özel boyalar. Fırın, baca ve yüksek sıcaklık ekipmanları için.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="referanslar" class="references">
+        <div class="container">
+            <h2 class="section-title">Referanslarımız</h2>
+            <div class="references-grid">
+                <div class="reference-image" onclick="openModal('l.png')">
+                    <img src="l.png" alt="Referans J">
+                </div>
+                <div class="reference-image" onclick="openModal('a.png')">
+                    <img src="a.png" alt="Referans A">
+                </div>
+                <div class="reference-image" onclick="openModal('b.png')">
+                    <img src="b.jpg" alt="Referans B">
+                </div>
+                <div class="reference-image" onclick="openModal('c.png')">
+                    <img src="c.jpg" alt="Referans C">
+                </div>
+                <div class="reference-image" onclick="openModal('d.png')">
+                    <img src="d.jpg" alt="Referans D">
+                </div>
+                <div class="reference-image" onclick="openModal('e.png')">
+                    <img src="e.jpg" alt="Referans E">
+                </div>
+                <div class="reference-image" onclick="openModal('f.png')">
+                    <img src="f.jpg" alt="Referans F">
+                </div>
+                <div class="reference-image" onclick="openModal('g.png')">
+                    <img src="g.jpg" alt="Referans G">
+                </div>
+                <div class="reference-image" onclick="openModal('h.png')">
+                    <img src="j.png" alt="Referans H">
+                </div>
+                <div class="reference-image" onclick="openModal('i.png')">
+                    <img src="k.jpg" alt="Referans I">
+                </div>
+                
+                <div class="reference-image" onclick="openModal('IMG-20250624-WA0005.jpg')">
+                    <img src="IMG-20250624-WA0005.jpg" alt="Referans K">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <!-- Contact Section -->
+    <section id="iletisim" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Bize Ulaşın</h2>
+           
+                <div class="contact-info">
+                    <h3 class="animated">İletişim Bilgileri</h3>
+                    <div class="contact-item animated delay-1">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <strong>Telefon:</strong>
+                            +90 507 921 22 27
+                        </div>
+                    </div>
+                    <div class="contact-item animated delay-2">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <strong>E-posta:</strong>
+                            anadoluraspaboya@gmail.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script>
+        function openModal(imgSrc) {
+            document.getElementById('imageModal').style.display = 'block';
+            document.getElementById('modalImg').src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
